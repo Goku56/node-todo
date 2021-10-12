@@ -26,6 +26,7 @@ routes.get('/post/:id', show)
 routes.post("/post/:id/comments/create", auth, comments.create)
 routes.delete("/post/:comments_id/comments/delete", auth, comments.destroy)
 routes.put("/post/:comments_id/comments/update", auth, comments.update)
+routes.get("/post/comments", comments.index)
 
 
 module.exports = routes
