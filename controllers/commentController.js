@@ -50,21 +50,7 @@ const comments = {
             return next(err.message)
         })
     },  
-
-    index:async (req,res,next)=>{
-        let document;
-    try{
-     document = await Comments.find()
-    }catch(err){
-        return next(ErrorResponse.serverError())
-    }
-
-    res.status(200).json({
-        success:true,
-        data:document
-    });
-    },
-
+    
     update:async(req,res,next)=>{
         let comment_id = req.params.comments_id
         if(!mongoose.Types.ObjectId.isValid(comment_id)){
