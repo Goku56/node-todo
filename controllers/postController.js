@@ -16,19 +16,17 @@ const storage = multer.diskStorage({
 const handleMultipartData = multer({ storage, limits:{fileSize:1000000 * 5} }).single('image');
 
 exports.create = async (req,res,next)=>{
-        handleMultipartData(req,res,async (err)=>{
+        handleMultipartData(req,res, async (err)=>{
             if(err){
                 return next(ErrorResponse.serverError());
             }
             const filePath = req.file.path;
- 
             
             const postValid = Joi.object({
                 title:Joi.string().min(3).max(15).required(),
                 description:Joi.string().min(5).max(25).required(),
                 category:Joi.string().min(6).max(30).required(),
-                created_by:Joi.string().min(6).max(30).required(),
-                comments:Joi.string()
+                created_by:Joi.string().min(6).max(30).required()
             });
             
             const { error } = postValid.validate(req.body);
@@ -60,7 +58,7 @@ exports.create = async (req,res,next)=>{
                 data:document
             });
         });
-    }
+}
 
 exports.update = async(req,res,next)=>{
     handleMultipartData(req,res,async (err)=>{

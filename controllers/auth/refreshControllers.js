@@ -47,7 +47,6 @@ exports.refresh = async (req,res,next) =>{
                 name:user.username,
                 email:user.email
             },process.env.JWT_REFRESH,{expiresIn:process.env.JWT_REFRESH_EXP})
-    
 
             await Refresh.create({
                 token:refreshToken
