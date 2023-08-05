@@ -7,19 +7,25 @@ const { category } = require("../controllers/categoryController")
 const comments = require("../controllers/commentController")
 const auth = require('../middlewares/auth')
 
-routes.post('/register',register)
-routes.post('/login',login)
-routes.post('/forgetpassword',forgetpassword)
-routes.post('/resetpassword/:resetToken',resetpassword)
+routes.post('/register', register)
+routes.get('/vikas', (req, res) => {
+    res.status(200).json({
+        success: true,
+        data: "handshaking api working!",
+    })
+})
+routes.post('/login', login)
+routes.post('/forgetpassword', forgetpassword)
+routes.post('/resetpassword/:resetToken', resetpassword)
 routes.get('/me', auth, me)
-routes.post('/logout',auth ,logout)
+routes.post('/logout', auth, logout)
 routes.get('/refresh', refresh)
 
-routes.post("/category",auth, category)
+routes.post("/category", auth, category)
 
-routes.post('/post',auth, create)
-routes.put('/post/:id',auth, update)
-routes.delete('/post/:id',auth, destroy)
+routes.post('/post', auth, create)
+routes.put('/post/:id', auth, update)
+routes.delete('/post/:id', auth, destroy)
 routes.get('/post/', index)
 routes.get('/post/:id', show)
 
