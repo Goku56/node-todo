@@ -23,10 +23,10 @@ app.use('/health-check', (req,res)=>{
 })
 
 //testing 
-app.use)
+// app.use()
 
 //routes
-app.use('/api/auth', require('./routers/router'))
+app.use('/ap4 41i/auth', require('./routers/router'))
 
 //ErrorHandler (should be the last middleware)
 app.use(errorHandler);
