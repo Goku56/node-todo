@@ -44,7 +44,7 @@ exports.register = async (req,res,next) =>{
             id:user._id,
             name:user.username,
             email:user.email
-        },process.env.JWT_SECRET,{expiresIn:process.env.JWT_EXPIRE})
+        },"process.env.JWT_SECRET",{expiresIn:'3d'})
 
         const message = `
         <h1>You just signUp to our site...</h1>
@@ -52,15 +52,15 @@ exports.register = async (req,res,next) =>{
         <p>Send the feedback at www.abc.com</p>
         <h3>Thank You...</h3>
         `
-        try{
-            await sendEmail({
-                to:user.email,
-                subject:"Welcome To Our Site",
-                text:message
-            })
-        }catch(err){
-            next(err)
-        }
+        // try{
+        //     await sendEmail({
+        //         to:user.email,
+        //         subject:"Welcome To Our Site",
+        //         text:message
+        //     })
+        // }catch(err){
+        //     next(err)
+        // }
 
         res.status(200).json({
             success:true,
