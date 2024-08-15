@@ -17,6 +17,10 @@ app.use(helmet())
 app.use(morgan("common"))
 global.appRoot = path.resolve(__dirname);
 
+//health check route
+app.use('/health-check', (req,res)=>{
+    res.send("App is Healthy and running..;)")
+})
 
 //routes
 app.use('/api/auth', require('./routers/router'))
