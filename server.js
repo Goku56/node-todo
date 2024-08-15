@@ -22,6 +22,9 @@ app.use('/health-check', (req,res)=>{
     res.send("App is Healthy and running..;)")
 })
 
+//testing 
+app.use)
+
 //routes
 app.use('/api/auth', require('./routers/router'))
 
